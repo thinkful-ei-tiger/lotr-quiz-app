@@ -1,6 +1,8 @@
 /**
  * Example store structure
  */
+'use strict';
+
 const store = {
   // 5 or more questions are required
   questions: [
@@ -40,8 +42,31 @@ function startPage() {
   </section>`;
 }
 
+
+
+function createAnswerList(){
+  let answerList = '';
+  let answers = store.questions[store.questionNumber].answers;
+  answers.forEach(element => { 
+    answerList += `<label for='submit-answer'>${element}</label> 
+    <input type='radio' name="answers" value=${element}>`;
+  }); 
+  return answerList;
+}
+
+
+
 function questionPage() {
-  return `<section></section>`;
+
+  return `<section>
+  <h2 class='.score'>Your Score: ${store.score} / ${store.questionNumber - store.score}</h2>
+  <p class='.question-number'>Question Number: ${store.questionNumber + 1} of ${store.questions.length}</p>
+  <h3 class='.question'>${store.questions[store.questionNumber].question}</h3>
+  <form action="">
+    ${createAnswerList()}
+    <button id="submit-answer" name="submit-answer" type="submit">Submit Answer</button>
+  </form>
+</section>`;
 }
 
 function answerPage() {
