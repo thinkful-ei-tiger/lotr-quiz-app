@@ -30,6 +30,55 @@ const store = {
   score: 0
 };
 
+function startPage() {
+  return `<section>
+  <h2>Welcome to our Lord of the Rings Quiz!</h2>
+  <p>It is going to be an epic journey! Press <em>Start Quiz</em> to begin!</p>
+  <form action="">
+    <button id="start" name="start" type="submit">Start Quiz</button>
+  </form>
+  </section>`;
+}
+
+function questionPage() {
+  return `<section></section>`;
+}
+
+function answerPage() {
+  return ``;
+}
+
+function finalPage() {
+  return ``;
+}
+
+function handleStartQuiz() {
+  $('main').on('click', '#start', function(event) {
+    console.log('One does not simply click the start button.')
+    console.log(`quizStarted`, store.quizStarted);
+    store.quizStarted = true;
+    console.log(`quizStarted`, store.quizStarted);
+    render();
+  })
+}
+
+function render() {
+  if (store.quizStarted === false) { 
+    $('main').html(startPage());
+    console.log('displaying startPage');
+  } else if (store.quizStarted) {
+    $('main').html(questionPage());
+    console.log('displaying questionPage');
+  } 
+}
+
+function main() {
+  render();
+  handleStartQuiz();
+}
+
+$(main());
+
 /**
  * 
  * Technical requirements:
