@@ -29,7 +29,10 @@ const store = {
   ],
   quizStarted: false,
   questionNumber: 0,
-  score: 0
+  score: 0, 
+  currentPage: '',
+  currentAnswer: ''
+
 };
 
 function startPage() {
@@ -54,6 +57,15 @@ function createAnswerList(){
   return answerList;
 }
 
+function handleSubmitAnswer() {
+  $('main').on('click', '#submit-answer', function(event) {
+    console.log('Answer has been submitted');
+    store.currentPage = 'answer';
+    store.currentAnswer = $(`input[name='answers']:checked`).val();
+    console.log(store.currentAnswer);
+    render();
+  });
+}
 
 
 function questionPage() {
@@ -82,6 +94,7 @@ function handleStartQuiz() {
     console.log('One does not simply click the start button.')
     console.log(`quizStarted`, store.quizStarted);
     store.quizStarted = true;
+    store.currentPage = 'question';
     console.log(`quizStarted`, store.quizStarted);
     render();
   })
@@ -91,15 +104,22 @@ function render() {
   if (store.quizStarted === false) { 
     $('main').html(startPage());
     console.log('displaying startPage');
-  } else if (store.quizStarted) {
-    $('main').html(questionPage());
-    console.log('displaying questionPage');
+  } else if (store.quizStarted) { 
+    if (store.currentPage === 'question') {
+      $('main').html(questionPage());
+      console.log('displaying questionPage');
+    } else if (store.currentPage === 'answer') {
+      $('main').html(answerPage());
+    } else {
+      $('main').html(finalPage());
+    }
   } 
 }
 
 function main() {
   render();
   handleStartQuiz();
+  handleSubmitAnswer();
 }
 
 $(main());
