@@ -165,19 +165,39 @@ function questionPage() {
 }
 
 function ranking() {
-  if (store.score === 0) {
-    return 'Smeagol';
-  } else if (store.score < 3) {
-    return 'a Hobbit';
-  } else if (store.score < 5) {
-    return 'a Dwarf';
-  } else if (store.score < 7) {
-    return 'an Elf';
-  } else if (store.score < 9) {
-    return 'a Ranger';
-  } else {
-    return 'a WIZARD!!'
+  switch(store.score) {
+    case 0:
+      return 'Smeagol';
+    case 1: 
+    case 2:
+      return 'a Hobbit';
+    case 3:
+    case 4:
+      return 'a Dwarf';
+    case 5:
+    case 6:
+      return 'an Elf';
+    case 7:
+    case 8:
+      return 'a Ranger';
+    case 9:
+    case 10:
+      return 'a WIZARD!!'
   }
+  
+  // if (store.score === 0) {
+  //   return 'Smeagol';
+  // } else if (store.score < 3) {
+  //   return 'a Hobbit';
+  // } else if (store.score < 5) {
+  //   return 'a Dwarf';
+  // } else if (store.score < 7) {
+  //   return 'an Elf';
+  // } else if (store.score < 9) {
+  //   return 'a Ranger';
+  // } else {
+  //   return 'a WIZARD!!'
+  // }
 }
 
 function finalPage() {
