@@ -47,7 +47,7 @@ const store = {
       correctAnswer: 'Bill'
     },
     {
-      question: 'Which is not an alias of the balgrog that Gandalf fights in the Mines of Moria?',
+      question: 'Which is not an alias of the balrog that Gandalf fights in the Mines of Moria?',
       answers: [
         'The Nameless Terror',
         `Durin's Bane`,
