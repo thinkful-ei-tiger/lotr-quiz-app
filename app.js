@@ -136,7 +136,7 @@ function createAnswerList() {
   let answers = store.questions[store.questionNumber].answers;
   answers.forEach(element => {
     answerList += `<label for='submit-answer'>${element}</label> 
-    <input type='radio' name="answers" value="${element}" required>`;
+    <input type='radio' name="answers" value="${element}">`;
   });
   return answerList;
 }
@@ -144,8 +144,11 @@ function createAnswerList() {
 function handleSubmitAnswer() {
   $('main').on('click', '#submit-answer', function (event) {
     event.preventDefault();
+    console.log('Answer has been submitted');
     store.currentPage = 'answer';
     store.currentAnswer = $(`input[name='answers']:checked`).val();
+    console.log('current answer', store.currentAnswer);
+    console.log('correct answer', store.questions[store.questionNumber].correctAnswer);
     render();
   });
 }
@@ -184,20 +187,6 @@ function ranking() {
     case 10:
       return 'a WIZARD!!'
   }
-  
-  // if (store.score === 0) {
-  //   return 'Smeagol';
-  // } else if (store.score < 3) {
-  //   return 'a Hobbit';
-  // } else if (store.score < 5) {
-  //   return 'a Dwarf';
-  // } else if (store.score < 7) {
-  //   return 'an Elf';
-  // } else if (store.score < 9) {
-  //   return 'a Ranger';
-  // } else {
-  //   return 'a WIZARD!!'
-  // }
 }
 
 function finalPage() {
@@ -213,10 +202,11 @@ function finalPage() {
 
 function handlePlayAgain() {
   $('main').on('click', '#play-again', function(event) {
-    store.quizStarted = false;
-    store.questionNumber = 0;
-    store.score = 0;
-    render();
+    if ($('input[name="answers"]:checked').val()) {
+      store.currentPage = 'answer';
+      store.currentAnswer = $(`input[name='answers']:checked`).val();
+      render();
+    }
   })
 }
 
