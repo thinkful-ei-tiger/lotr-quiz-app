@@ -121,10 +121,10 @@ function answerPage() {
   if (store.currentAnswer === correctAnswer) {
     store.score++
     answerTemplate = `<p>${store.currentAnswer} is correct!</p>
-    <img src="images/correct-answer.gif" width="200px"><br>`
+    <img src="images/correct-answer.gif" alt="Strutting" width="200px"><br>`
   } else {
     answerTemplate = `<p>Sorry, ${store.currentAnswer} is not correct. The correct answer is ${correctAnswer}</p>
-    <img src="images/wrong-answer.gif" width="200px"><br>`
+    <img src="images/wrong-answer.gif" alt="Crying" width="200px"><br>`
   }
 
   return `<section>
@@ -226,22 +226,22 @@ function ranking() {
 function rankingImage() {
   switch(store.score) {
     case 0:
-      return `images/Smeagol.jpg`;
+      return `images/Smeagol.jpg 'alt="Smeagol"'`;
     case 1: 
     case 2:
-      return `images/Hobbit.jpg`;
+      return `images/Hobbit.jpg 'alt="Hobbit"'`;
     case 3:
     case 4:
-      return `images/Dwarf.jpg`;
+      return `images/Dwarf.jpg 'alt="Dwarf"'`;
     case 5:
     case 6:
-      return `images/Elf.jpg`;
+      return `images/Elf.jpg 'alt="Elf"'`;
     case 7:
     case 8:
-      return `images/Ranger.jpg`;
+      return `images/Ranger.jpg 'alt="Ranger"'`;
     case 9:
     case 10:
-      return `images/Wizard.jpg`
+      return `images/Wizard.jpg 'alt="Wizard"'`
   }
 }
 
