@@ -50,11 +50,11 @@ const store = {
       question: 'Which is not an alias of the balgrog that Gandalf fights in the Mines of Moria?',
       answers: [
         'The Nameless Terror',
-        'Durin\'s Bane',
+        `Durin's Bane`,
         'Flame of Udun',
-        'Morgoth\'s Might'
+        `Morgoth's Might`
       ],
-      correctAnswer: 'Morgoth\'s Might'
+      correctAnswer: `Morgoth's Might`
     },
     {
       question: 'What is the name of Morgoth\'s signature warhammer?',
@@ -90,9 +90,9 @@ function answerPage() {
   let correctAnswer = store.questions[store.questionNumber].correctAnswer;
   if (store.currentAnswer === correctAnswer) {
     store.score++
-    answerTemplate = '<p>Correct!</p>'
+    answerTemplate = `<p>${store.currentAnswer} is correct!</p>`
   } else {
-    answerTemplate = `<p>Sorry, wrong answer. The correct answer is ${correctAnswer}</p>`
+    answerTemplate = `<p>Sorry, ${store.currentAnswer} is not correct. The correct answer is ${correctAnswer}</p>`
   }
 
   return `<section>
@@ -136,7 +136,7 @@ function createAnswerList() {
   let answers = store.questions[store.questionNumber].answers;
   answers.forEach(element => {
     answerList += `<label for='submit-answer'>${element}</label> 
-    <input type='radio' name="answers" value=${element}>`;
+    <input type='radio' name="answers" value="${element}">`;
   });
   return answerList;
 }
@@ -147,7 +147,8 @@ function handleSubmitAnswer() {
     console.log('Answer has been submitted');
     store.currentPage = 'answer';
     store.currentAnswer = $(`input[name='answers']:checked`).val();
-    console.log(store.currentAnswer);
+    console.log('current answer', store.currentAnswer);
+    console.log('correct answer', store.questions[store.questionNumber].correctAnswer);
     render();
   });
 }
@@ -166,9 +167,40 @@ function questionPage() {
 </section>`;
 }
 
+function ranking() {
+  if (store.score === 0) {
+    return 'Smeagol';
+  } else if (store.score < 3) {
+    return 'a Hobbit';
+  } else if (store.score < 5) {
+    return 'a Dwarf';
+  } else if (store.score < 7) {
+    return 'an Elf';
+  } else if (store.score < 9) {
+    return 'a Ranger';
+  } else {
+    return 'a WIZARD!!'
+  }
+}
 
 function finalPage() {
-  return `<p>Final Page</p>`;
+  return `<section>
+    <h2>Your journey is complete!</h2>
+    <p>Your final score is ${store.score} Correct / ${store.questionNumber - store.score + 1} Incorrect</p>
+    <p>You are ${ranking()}!</p>
+    <form action="">
+      <button id="play-again" name="play-again" type="submit">Play Again!</button>
+    </form>
+  </section>`;
+}
+
+function handlePlayAgain() {
+  $('main').on('click', '#play-again', function(event) {
+    store.quizStarted = false;
+    store.questionNumber = 0;
+    store.score = 0;
+    render();
+  })
 }
 
 function handleStartQuiz() {
@@ -203,6 +235,7 @@ function main() {
   handleStartQuiz();
   handleSubmitAnswer();
   handleNextButton();
+  handlePlayAgain();
 }
 
 $(main());
