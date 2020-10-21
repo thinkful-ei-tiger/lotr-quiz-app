@@ -6,3 +6,45 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+@import url(https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap);
+h1{
+  text-align: center;
+  font-family: "MedievalSharp";
+  text-emphasis: "strong";
+  font-size: 50px;
+}
+
+h2{
+  font-family: "MedievalSharp";
+}
+
+main{
+  text-align: center;
+  background-color: #EBD5B3;
+  width: 80%;
+  margin: auto;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+body{
+  background: url(images/map.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+section{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.answer-list{
+  text-align: center;
+}
+
+label{
+  width: 180px;
+}
