@@ -135,8 +135,8 @@ function createAnswerList() {
   let answerList = '';
   let answers = store.questions[store.questionNumber].answers;
   answers.forEach(element => {
-    answerList += `<label for='submit-answer'>${element}</label> 
-    <input type='radio' name="answers" value="${element}">`;
+    answerList += `<input type='radio' name="answers" value="${element}">
+    <label for='submit-answer'>${element}</label><br>`;
   });
   return answerList;
 }
