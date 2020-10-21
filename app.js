@@ -226,22 +226,22 @@ function ranking() {
 function rankingImage() {
   switch(store.score) {
     case 0:
-      return `images/Smeagol.jpg 'alt="Smeagol"'`;
+      return `"images/Smeagol.jpg" alt="Smeagol"`;
     case 1: 
     case 2:
-      return `images/Hobbit.jpg 'alt="Hobbit"'`;
+      return `"images/Hobbit.jpg" alt="Hobbit"`;
     case 3:
     case 4:
-      return `images/Dwarf.jpg 'alt="Dwarf"'`;
+      return `"images/Dwarf.jpg" alt="Dwarf"`;
     case 5:
     case 6:
-      return `images/Elf.jpg 'alt="Elf"'`;
+      return `"images/Elf.jpg" alt="Elf"`;
     case 7:
     case 8:
-      return `images/Ranger.jpg 'alt="Ranger"'`;
+      return `"images/Ranger.jpg" alt="Ranger"`;
     case 9:
     case 10:
-      return `images/Wizard.jpg 'alt="Wizard"'`
+      return `"images/Wizard.jpg" alt="Wizard"`
   }
 }
 
@@ -250,7 +250,7 @@ function finalPage() {
     <h2>Your journey is complete.</h2>
     <p>Your final score is ${store.score} correct out of ${store.questions.length}.</p>
     <p>You are ${ranking()}!</p>
-    <img src="${rankingImage()}" width="200px"><br>
+    <img src=${rankingImage()}+`width="200px"`><br>
     <form action="">
       <button id="play-again" name="play-again" type="submit">Play Again!</button>
     </form>
