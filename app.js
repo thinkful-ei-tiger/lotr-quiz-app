@@ -143,11 +143,12 @@ function createAnswerList() {
 
 function handleSubmitAnswer() {
   $('main').on('click', '#submit-answer', function (event) {
-    //event.preventDefault();
-    console.log('Answer has been submitted');
-    store.currentPage = 'answer';
-    store.currentAnswer = $(`input[name='answers']:checked`).val();
-    render();
+    event.preventDefault();
+    if ($('input[name="answers"]:checked').val()) {
+      store.currentPage = 'answer';
+      store.currentAnswer = $(`input[name='answers']:checked`).val();
+      render();
+    }
   });
 }
 
@@ -185,20 +186,6 @@ function ranking() {
     case 10:
       return 'a WIZARD!!'
   }
-  
-  // if (store.score === 0) {
-  //   return 'Smeagol';
-  // } else if (store.score < 3) {
-  //   return 'a Hobbit';
-  // } else if (store.score < 5) {
-  //   return 'a Dwarf';
-  // } else if (store.score < 7) {
-  //   return 'an Elf';
-  // } else if (store.score < 9) {
-  //   return 'a Ranger';
-  // } else {
-  //   return 'a WIZARD!!'
-  // }
 }
 
 function finalPage() {
