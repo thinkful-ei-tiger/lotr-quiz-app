@@ -144,12 +144,11 @@ function createAnswerList() {
 function handleSubmitAnswer() {
   $('main').on('click', '#submit-answer', function (event) {
     event.preventDefault();
-    console.log('Answer has been submitted');
-    store.currentPage = 'answer';
-    store.currentAnswer = $(`input[name='answers']:checked`).val();
-    console.log('current answer', store.currentAnswer);
-    console.log('correct answer', store.questions[store.questionNumber].correctAnswer);
-    render();
+    if ($('input[name="answers"]:checked').val()) {
+      store.currentPage = 'answer';
+      store.currentAnswer = $(`input[name='answers']:checked`).val();
+      render();
+    }
   });
 }
 
@@ -202,11 +201,10 @@ function finalPage() {
 
 function handlePlayAgain() {
   $('main').on('click', '#play-again', function(event) {
-    if ($('input[name="answers"]:checked').val()) {
-      store.currentPage = 'answer';
-      store.currentAnswer = $(`input[name='answers']:checked`).val();
-      render();
-    }
+    store.quizStarted = false;
+    store.questionNumber = 0;
+    store.score = 0;
+    render();
   })
 }
 
