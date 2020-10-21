@@ -4,47 +4,117 @@
 'use strict';
 
 const store = {
-  // 5 or more questions are required
-  questions: [
-    {
-      question: 'Which is not an alias of the balgrog that Gandalf fights in the Mines of Moria?',
-      answers: [
-        'The Nameless Terror',
-        'Durin\'s Bane',
-        'Flame of Udun',
-        'Morgoth\'s Might'
-      ],
-      correctAnswer: 'Morgoth\'s Might'
-    },
-    {
-      question: 'What is the name of Morgoth\'s signature warhammer?',
-      answers: [
-        'Grond',
-        'Thrangell',
-        'Gurthang',
-        'The Gopher\'s Nightmare'
-      ],
-      correctAnswer: 'Grond'
-    },
-    {
-      question: 'What races were Beren and Luthien, respectively?',
-      answers: [
-        'dwarf and elf',
-        'elf and elf',
-        'human and elf',
-        'chipmunk and squarrel'
-      ],
-      correctAnswer: 'human and elf'
-    }
-
-  ],
-  quizStarted: false,
-  questionNumber: 0,
-  score: 0, 
-  currentPage: '',
-  currentAnswer: ''
-
+    // 5 or more questions are required
+    questions: [
+        {
+            question: 'Which one is NOT a hobbit?',
+            answers: [
+                'Frodo',
+                'Bilbo',
+                'Sam',
+                'Sleepy'
+            ],
+            correctAnswer: 'Sleepy'
+        },
+        {
+            question: 'What was the name of the dark lord?',
+            answers: [
+                'Doctor Evil',
+                'Sauron',
+                'Thanos',
+                'Darth Vader'
+            ],
+            correctAnswer: 'Sauron'
+        },
+        {
+            question: 'What was the name Gandalf’s sword?',
+            answers: [
+                'Orcrist',
+                'Sting',
+                'Glamdring',
+                'Narsil'
+            ],
+            correctAnswer: 'Glamdring'
+        },
+        {
+            question: 'What was the name of Sam’s Pony?',
+            answers: [
+                'Bill',
+                'Rocket',
+                'Lightning',
+                'Bailey'
+            ],
+            correctAnswer: 'Bill'
+        },
+        {
+            question: 'Which is not an alias of the balgrog that Gandalf fights in the Mines of Moria?',
+            answers: [
+                'The Nameless Terror',
+                'Durin\'s Bane',
+                'Flame of Udun',
+                'Morgoth\'s Might'
+            ],
+            correctAnswer: 'Morgoth\'s Might'
+        },
+        {
+            question: 'What is the name of Morgoth\'s signature warhammer?',
+            answers: [
+                'Grond',
+                'Thrangell',
+                'Gurthang',
+                'The Gopher\'s Nightmare'
+            ],
+            correctAnswer: 'Grond'
+        },
+        {
+            question: 'What races were Beren and Luthien, respectively?',
+            answers: [
+                'dwarf and elf',
+                'elf and elf',
+                'human and elf',
+                'chipmunk and squarrel'
+            ],
+            correctAnswer: 'human and elf'
+        }
+    ],
+    quizStarted: false,
+    questionNumber: 0,
+    score: 0,
+    currentPage: '',
+    currentAnswer: ''
 };
+
+
+function handleNextButton() {
+  $('main').on('click', '#next-button', function (event) {
+      if (store.questionNumber === store.questions.length - 1) {
+          store.currentPage = 'final'
+      } else {
+          store.questionNumber++;
+          store.currentPage = 'question'
+      }
+      render();
+  });
+}
+
+
+function answerPage() {
+  let correctAnswer = store.questions[store.questionNumber].correctAnswer;
+  if (store.currentAnswer === correctAnswer) {
+      store.score++
+      answerTemplate = '<p>Correct!</p>'
+  } else {
+      answerTemplate = `<p>Sorry, wrong answer. The correct answer is ${correctAnswer}</p>`
+  }
+
+  return `<section>
+      <h2 class='.score'>Your Score: ${store.score} Correct / ${store.questionNumber - store.score} Incorrect</h2>
+      ${answerTemplate}
+      <form action =''>
+          <button id='next-button' name='next-button' type='submit'>Next</button>
+      </form>
+ </section> `;
+}
 
 function startPage() {
   return `<section>
