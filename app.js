@@ -153,7 +153,7 @@ function handleNextButton() {
 
 function startPage() {
   return `<section>
-  <h2>Welcome to our Lord of the Rings Quiz!</h2>
+  <h2>Welcome to our Lord of the Rings Quiz</h2>
   <p>It is going to be an epic journey! Press <em>Start Quiz</em> to begin!</p>
   <form action="">
     <button id="start" name="start" type="submit">Start Quiz</button>
@@ -193,9 +193,11 @@ function questionPage() {
   <p class='.question-number'>Question Number: ${store.questionNumber} of ${store.questions.length}</p>
   <h3 class='.question'>${store.questions[store.questionNumber].question}</h3>
   <form action="">
-    ${createAnswerList()}
-    <button id="submit-answer" name="submit-answer" type="submit">Submit Answer</button>
-  </form>
+    <div class="answer-list"> 
+      ${createAnswerList()} 
+    </div>
+    <button id="submit-answer" name="submit-answer" type="submit">Submit Answer</button>  
+    </form>
 </section>`;
 }
 

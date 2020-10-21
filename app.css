@@ -6,3 +6,90 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+@import url(https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;0,700;0,800;1,600&display=swap);
+
+h1 {
+  text-align: center;
+  font-family: "MedievalSharp";
+  text-emphasis: "strong";
+  font-size: 50px;
+}
+
+h2 {
+  font-family: "MedievalSharp";
+}
+
+h3 {
+  font-family: "Montserrat";
+  font-weight: 600;
+}
+
+p {
+  font-family: "Montserrat";
+}
+
+main{
+  text-align: center;
+  background-color: #EBD5B3;
+  width: 80%;
+  margin: auto;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+img{
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* body{
+  background: url(images/map3.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-opacity: 0.5;
+  background-size: cover;
+} */
+
+body::after {
+  content: "";
+  background: url(images/map3.jpg) no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.70;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+.answer-list{
+  width: 60%;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: left;
+  font-family: "Montserrat";
+}
+
+label{
+  width: 180px;
+}
+
+button {
+  padding: 10px 25px 10px 25px;
+  border-radius: 5px;
+  font-family: "Montserrat";
+}
+
+@media all and (min-width: 800px) {
+
+  .answer-list {
+    width: 35%;
+  }
+}
