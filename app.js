@@ -250,7 +250,7 @@ function finalPage() {
     <h2>Your journey is complete.</h2>
     <p>Your final score is ${store.score} correct out of ${store.questions.length}.</p>
     <p>You are ${ranking()}!</p>
-    <img src=${rankingImage()}+`width="200px"`><br>
+    <img src=${rankingImage()}+'width="200px"'><br>
     <form action="">
       <button id="play-again" name="play-again" type="submit">Play Again!</button>
     </form>
