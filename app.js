@@ -147,8 +147,6 @@ function handleSubmitAnswer() {
     console.log('Answer has been submitted');
     store.currentPage = 'answer';
     store.currentAnswer = $(`input[name='answers']:checked`).val();
-    console.log('current answer', store.currentAnswer);
-    console.log('correct answer', store.questions[store.questionNumber].correctAnswer);
     render();
   });
 }
