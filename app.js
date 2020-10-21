@@ -7,25 +7,36 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color is broccoli?',
+      question: 'Which is not an alias of the balgrog that Gandalf fights in the Mines of Moria?',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'The Nameless Terror',
+        'Durin\'s Bane',
+        'Flame of Udun',
+        'Morgoth\'s Might'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'Morgoth\'s Might'
     },
     {
-      question: 'What is the current year?',
+      question: 'What is the name of Morgoth\'s signature warhammer?',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'Grond',
+        'Thrangell',
+        'Gurthang',
+        'The Gopher\'s Nightmare'
       ],
-      correctAnswer: '2019'
+      correctAnswer: 'Grond'
+    },
+    {
+      question: 'What races were Beren and Luthien, respectively?',
+      answers: [
+        'dwarf and elf',
+        'elf and elf',
+        'human and elf',
+        'chipmunk and squarrel'
+      ],
+      correctAnswer: 'human and elf'
     }
+
   ],
   quizStarted: false,
   questionNumber: 0,
