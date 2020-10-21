@@ -69,12 +69,42 @@ const store = {
     {
       question: 'What races were Beren and Luthien, respectively?',
       answers: [
-        'dwarf and elf',
-        'elf and elf',
-        'human and elf',
-        'chipmunk and squarrel'
+        'Dwarf and elf',
+        'Elf and elf',
+        'Human and elf',
+        'Moose and squirrel'
       ],
-      correctAnswer: 'human and elf'
+      correctAnswer: 'Human and elf'
+    },
+    {
+      question: 'How many members were in the original fellowship of the ring?',
+      answers: [
+        'Seven',
+        'Nine',
+        'Twelve',
+        'Over 9000'
+        ],
+      correctAnswer: 'Nine'
+    },
+    {
+      question: 'How many Ringwraiths (or Nazgûl) were there?',
+      answers: [
+        'Five',
+        'Seven',
+        'Nine',
+        'Thirteen'
+        ],
+      correctAnswer: 'Nine'
+    },
+    {
+      question: `What was Sam's full name?`,
+      answers: [
+        'Sam Brandybuck',
+        'Sambert Took',
+        'Samuel L. Jackson',
+        'Samwise Gamgee'
+        ],
+      correctAnswer: 'Samwise Gamgee'
     }
   ],
   quizStarted: false,
@@ -90,9 +120,11 @@ function answerPage() {
   let correctAnswer = store.questions[store.questionNumber].correctAnswer;
   if (store.currentAnswer === correctAnswer) {
     store.score++
-    answerTemplate = `<p>${store.currentAnswer} is correct!</p>`
+    answerTemplate = `<p>${store.currentAnswer} is correct!</p>
+    <img src="images/correct-answer.gif" width="200px"><br>`
   } else {
-    answerTemplate = `<p>Sorry, ${store.currentAnswer} is not correct. The correct answer is ${correctAnswer}</p>`
+    answerTemplate = `<p>Sorry, ${store.currentAnswer} is not correct. The correct answer is ${correctAnswer}</p>
+    <img src="images/wrong-answer.gif" width="200px"><br>`
   }
 
   return `<section>
@@ -138,6 +170,7 @@ function createAnswerList() {
     answerList += `<input type='radio' name="answers" value="${element}">
     <label for='submit-answer'>${element}</label><br>`;
   });
+
   return answerList;
 }
 
@@ -157,7 +190,7 @@ function questionPage() {
 
   return `<section>
   <h2 class='.score'>Your Score: ${store.score} / ${store.questionNumber - store.score}</h2>
-  <p class='.question-number'>Question Number: ${store.questionNumber + 1} of ${store.questions.length}</p>
+  <p class='.question-number'>Question Number: ${store.questionNumber} of ${store.questions.length}</p>
   <h3 class='.question'>${store.questions[store.questionNumber].question}</h3>
   <form action="">
     <div class="answer-list"> 
@@ -190,11 +223,35 @@ function ranking() {
   }
 }
 
+function rankingImage() {
+  switch(store.score) {
+    case 0:
+      return `images/Smeagol.jpg`;
+    case 1: 
+    case 2:
+      return `images/Hobbit.jpg`;
+    case 3:
+    case 4:
+      return `images/Dwarf.jpg`;
+    case 5:
+    case 6:
+      return `images/Elf.jpg`;
+    case 7:
+    case 8:
+      return `images/Ranger.jpg`;
+    case 9:
+    case 10:
+      return `images/Wizard.jpg`
+  }
+}
+
 function finalPage() {
   return `<section>
-    <h2>Your journey is complete</h2>
-    <p>Your final score is ${store.score} Correct / ${store.questionNumber - store.score + 1} Incorrect</p>
+    <h2>Your journey is complete!</h2>
+    <p>Your final score is ${store.score} Correct out of ${store.questions.length +1} Incorrect</p>
+
     <p>You are ${ranking()}!</p>
+    <img src="${rankingImage()}" width="200px"><br>
     <form action="">
       <button id="play-again" name="play-again" type="submit">Play Again!</button>
     </form>
