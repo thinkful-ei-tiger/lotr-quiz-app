@@ -190,7 +190,7 @@ function questionPage() {
 
   return `<section>
   <h2 class='.score'>Your Score: ${store.score} / ${store.questionNumber - store.score}</h2>
-  <p class='.question-number'>Question Number: ${store.questionNumber} of ${store.questions.length}</p>
+  <p class='.question-number'>Question Number: ${store.questionNumber + 1} of ${store.questions.length}</p>
   <h3 class='.question'>${store.questions[store.questionNumber].question}</h3>
   <form action="">
     <div class="answer-list"> 
@@ -250,7 +250,7 @@ function finalPage() {
     <h2>Your journey is complete.</h2>
     <p>Your final score is ${store.score} correct out of ${store.questions.length}.</p>
     <p>You are ${ranking()}!</p>
-    <img src=${rankingImage()}+'width="200px"'><br>
+    <img src=${rankingImage()}><br>
     <form action="">
       <button id="play-again" name="play-again" type="submit">Play Again!</button>
     </form>
