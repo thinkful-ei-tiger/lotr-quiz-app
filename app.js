@@ -136,7 +136,7 @@ function createAnswerList() {
   let answers = store.questions[store.questionNumber].answers;
   answers.forEach(element => {
     answerList += `<label for='submit-answer'>${element}</label> 
-    <input type='radio' name="answers" value="${element}">`;
+    <input type='radio' name="answers" value="${element}" required>`;
   });
   return answerList;
 }
@@ -144,11 +144,8 @@ function createAnswerList() {
 function handleSubmitAnswer() {
   $('main').on('click', '#submit-answer', function (event) {
     event.preventDefault();
-    console.log('Answer has been submitted');
     store.currentPage = 'answer';
     store.currentAnswer = $(`input[name='answers']:checked`).val();
-    console.log('current answer', store.currentAnswer);
-    console.log('correct answer', store.questions[store.questionNumber].correctAnswer);
     render();
   });
 }
