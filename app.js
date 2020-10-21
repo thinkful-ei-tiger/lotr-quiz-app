@@ -245,8 +245,8 @@ function rankingImage() {
 
 function finalPage() {
   return `<section>
-    <h2>Your journey is complete!</h2>
-    <p>Your final score is ${store.score} Correct out of ${store.questions.length +1} Incorrect</p>
+    <h2>Your journey is complete.</h2>
+    <p>Your final score is ${store.score} correct out of ${store.questions.length}.</p>
     <p>You are ${ranking()}!</p>
     <img src="${rankingImage()}" width="200px"><br>
     <form action="">
