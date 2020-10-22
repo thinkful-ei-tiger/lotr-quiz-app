@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App Wireframe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Lord of the Rings Quiz</h1>
+  </header>
+  <main>
+    <!-- Start Page -->
+
+    <section>
+      <h2>Welcome to our Lord of the Rings Quiz</h2>
+      <p>It is going to be an epic journey! Press <em>Start Quiz</em> to begin!</p>
+      <form action="">
+        <button id="start" name="start" type="submit">Start Quiz</button>
+      </form>
+    </section>
+
+    <!-- Question Page -->
+
+    <section>
+      <h2 class='.score'>Your Score: 0 / 0</h2>
+      <p class='.question-number'>Question Number: 1 of 10</p>
+      <h3 class='.question'>This is the first question.</h3>
+      <form action="">
+        <div class="answer-list"> 
+          <input type='radio' name="answers" value="${element}">
+          <label for='submit-answer'>Answer1</label><br>
+          <input type='radio' name="answers" value="${element}">
+          <label for='submit-answer'>Answer2</label><br>
+          <input type='radio' name="answers" value="${element}">
+          <label for='submit-answer'>Answer3</label><br>
+          <input type='radio' name="answers" value="${element}">
+          <label for='submit-answer'>Answer4</label><br>
+        </div>
+        <button id="submit-answer" name="submit-answer" type="submit">Submit Answer</button>  
+      </form>
+    </section>
+
+
+
+    <!-- Answer Page -->
+
+    <section>
+      <h2 class='.score'>Your Score: 0 Correct / 0 Incorrect</h2>
+      <p class='.question-number'>Question Number: 1 of 10</p>
+      <p>Your answer is correct!</p>
+      <img src="images/some-image.jpg" alt="Some Image" width="200px"><br>
+      <form action =''>
+          <button id='next-button' name='next-button' type='submit'>Next</button>
+      </form>
+      
+    </section>
+
+    <!-- Final Page -->
+
+    <section>
+      <h2>Your journey is complete.</h2>
+      <p>Your final score is 2 correct out of 10.</p>
+      <p>You are a Hobbit!</p>
+      <img src="images/rank-image.jpg"><br>
+      <form action="">
+        <button id="play-again" name="play-again" type="submit">Play Again!</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
